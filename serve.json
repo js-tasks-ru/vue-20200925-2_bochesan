@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/assets/styles/:rest", "destination": "/public/assets/styles/:rest" },
+    { "source": "/assets/icons/:rest", "destination": "/public/assets/icons/:rest" },
+    { "source": "/images/:rest", "destination": "/public/images/:rest" }
+  ]
+}
