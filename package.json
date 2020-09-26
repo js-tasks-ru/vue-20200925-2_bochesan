@@ -1,0 +1,83 @@
+{
+  "name": "tasks-vue-2",
+  "version": "2.0.0",
+  "description": "Задачи курса Vue.js, 2",
+  "main": "index.js",
+  "scripts": {
+    "file-serve": "serve",
+    "serve": "vue-cli-service serve",
+    "test": "jest --",
+    "lint": "eslint \"*.js\" --fix",
+    "format": "prettier --write \"*.js\"",
+    "test:solution": "cross-env SOLUTION=1 npm test"
+  },
+  "author": "Grigorii K. Shartsev",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@vue/cli-service": "^4.5.6",
+    "@vue/cli-plugin-unit-jest": "^4.5.6",
+    "@vue/test-utils": "^1.1.0",
+    "axios": "^0.20.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^26.4.2",
+    "jest-date-mock": "^1.0.8",
+    "ky": "^0.23.0",
+    "nanoid": "^3.1.12",
+    "serve": "^11.3.2",
+    "vue": "^2.6.12",
+    "vue-jest": "^3.0.7",
+    "vue-router": "^3.4.4",
+    "vue-template-compiler": "^2.6.12",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.9.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^2.1.2",
+    "yaml": "^1.10.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2020": true,
+      "jest": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/prettier"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  }
+}
