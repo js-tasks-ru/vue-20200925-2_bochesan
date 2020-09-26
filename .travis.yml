@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 14.12.0
+
+script:
+  - npm test --silent
+
+notifications:
+  webhooks:
+    - https://learn.javascript.ru/taskbook/travis/notifications
