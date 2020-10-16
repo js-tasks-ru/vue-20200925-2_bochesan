@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/styles/index.css">
+  <title>Meetup Page Draft</title>
+</head>
+<body>
+<div id="app">
+  <div>
+    <div class="meetup-cover">
+      <h1 class="meetup-cover__title">Название митапа</h1>
+    </div>
+
+    <div class="container">
+      <div class="meetup">
+        <div class="meetup__content">
+          <h3>Описание</h3>
+          <p class="meetup-description">Описание митапа</p>
+
+          <h3>Программа</h3>
+          <div class="meetup-agenda">
+            <p class="meetup-agenda__empty">Программа пока пуста, но когда-нибудь в ней обязательно что-нибудь появится!</p>
+            <div class="meetup-agenda__item">
+              <div class="meetup-agenda__item-col">
+                <img class="icon" alt="icon" src="/assets/icons/icon-cal-sm.svg" />
+              </div>
+              <div class="meetup-agenda__item-col">00:00 - 00:00</div>
+              <div class="meetup-agenda__item-col">
+                <h5 class="meetup-agenda__title">Название доклада</h5>
+                <p><span>Докладчик</span><span class="meetup-agenda__dot"></span><span class="meetup-agenda__lang">RU</span></p>
+                <p>Описание доклада</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="meetup__aside">
+          <ul class="info-list">
+            <li>
+              <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-user.svg" />
+              Организатор
+            </li>
+            <li>
+              <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-map.svg" />
+              Место
+            </li>
+            <li>
+              <img class="icon info-list__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
+              <time datetime="2020-02-31">31 фев. 2020</time>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
