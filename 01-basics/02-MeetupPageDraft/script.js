@@ -55,7 +55,7 @@ export const app = new Vue({
   agendaItemIcons,
 
   data: {
-    rawMeetup: {},
+    rawMeetup: null,
   },
 
   mounted() {
@@ -65,16 +65,21 @@ export const app = new Vue({
 
   computed: {
     meetup() {
-      return {
-        ...this.rawMeetup,
-        image: this.rawMeetup.imageId ? getMeetupCoverLink(this.rawMeetup) : undefined,
-        date: new Date(this.rawMeetup.date),
-        localDate: new Date(this.rawMeetup.date).toLocaleDateString(navigator.language, {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }),
-      };
+      if (this.rawMeetup !== null) {
+        return {
+          ...this.rawMeetup,
+          image: this.rawMeetup.imageId ? getMeetupCoverLink(this.rawMeetup) : undefined,
+          date: new Date(this.rawMeetup.date),
+          localDate: new Date(this.rawMeetup.date).toLocaleDateString(navigator.language, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
+        }
+      }
+      else {
+        return this.rawMeetup;
+      }
     }
   },
 

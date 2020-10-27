@@ -14,7 +14,7 @@
     display: none;
   }
 </style>
-<div id="app" v-cloak>
+<div id="app" v-cloak v-if="meetup !== null">
   <div>
     <div class="meetup-cover" :style="meetup.image ? {'--bg-url': `url('${meetup.image}')`} : ''">
       <h1 class="meetup-cover__title">{{ meetup.title }}</h1>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="meetup-agenda__item-col">{{ agenda.startsAt }} - {{ agenda.endsAt }}</div>
                 <div class="meetup-agenda__item-col">
-                  <h5 class="meetup-agenda__title" v-html="agenda.title ? agenda.title : $options.agendaItemTitles[agenda.type]"></h5>
+                  <h5 class="meetup-agenda__title" v-text="agenda.title ? agenda.title : $options.agendaItemTitles[agenda.type]"></h5>
                   <p v-if="agenda.type === 'talk'">
                     <span>{{ agenda.speaker }}</span>
                     <span class="meetup-agenda__dot"></span>
