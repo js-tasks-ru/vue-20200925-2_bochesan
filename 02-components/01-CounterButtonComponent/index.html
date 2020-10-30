@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>CounterButtonComponent</title>
+</head>
+<body>
+
+<div id="app">
+  <p><counter-button v-model="count1"></counter-button> - count = {{ count1 }}</p>
+  <p><counter-button v-model="count2"></counter-button> - count = {{ count2 }}</p>
+  <p><counter-button :count="count3" @increment="count3 = $event"></counter-button> - count = {{ count3 }}</p>
+</div>
+
+<script type="module">
+  import Vue from './vue.esm.browser.js';
+  import { CounterButton } from './CounterButton.js';
+
+  const app = new Vue({
+    el: '#app',
+
+    components: {
+      CounterButton,
+    },
+
+    data: {
+      count1: 15,
+      count2: undefined,
+      count3: 0,
+    },
+  });
+</script>
+
+</body>
+</html>
