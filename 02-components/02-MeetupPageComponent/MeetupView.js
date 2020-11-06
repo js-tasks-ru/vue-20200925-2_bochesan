@@ -47,6 +47,6 @@ export const MeetupView = {
   computed: {
     getImage() {
       return this.meetup.imageId ? getMeetupCoverLink(this.meetup) : undefined;
-    }
+    },
   },
 };
