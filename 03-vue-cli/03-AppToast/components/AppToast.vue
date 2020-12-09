@@ -35,22 +35,23 @@ export default {
   methods: {
     error(message) {
       this.addToast('error', message);
-      setTimeout(() => {
-        this.toasts.splice(0, 1);
-      }, DELAY);
+      this.removeToast();
     },
 
     success(message) {
       this.addToast('succes', message);
-      setTimeout(() => {
-        this.toasts.splice(0, 1);
-      }, DELAY);
+      this.removeToast();
     },
     addToast(type, message) {
       this.toasts.splice(this.toasts.length, 1, {
         type,
         message,
       });
+    },
+    removeToast() {
+      setTimeout(() => {
+        this.toasts.splice(0, 1);
+      }, DELAY);
     },
   },
 };
