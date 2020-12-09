@@ -2,7 +2,7 @@
   <div class="dropdown" :class="{ 'show': show }" @click="toggle">
     <button type="button" class="button dropdown__toggle" :class="{ 'dropdown__toggle_icon': haveIcon }">
       <app-icon v-if="selectedOption && selectedOption.icon !== undefined" :icon="selectedOption.icon" />
-      {{ title }} {{ selectedOption && selectedOption.text !== undefined ? `– ${selectedOption.text}` : '' }}
+      {{ title }} {{ selectedOption && selectedOption.text !== undefined ? `- ${selectedOption.text}` : '' }}
     </button>
 
     <div class="dropdown__menu" :class="{ 'show': show }">
