@@ -1,8 +1,8 @@
 <template>
   <div class="dropdown" :class="{ 'show': show }" @click="toggle">
     <button type="button" class="button dropdown__toggle" :class="{ 'dropdown__toggle_icon': haveIcon }">
-      <app-icon v-if="checkedIcon" :icon="checkedIcon" />
-      {{ title }} {{ checkedTitle }}
+      <app-icon v-if="selectedOption && selectedOption.icon !== undefined" :icon="selectedOption.icon" />
+      {{ title }} {{ selectedOption && selectedOption.text !== undefined ? `- ${selectedOption.text}` : '' }}
     </button>
 
     <div class="dropdown__menu" :class="{ 'show': show }">
@@ -43,36 +43,13 @@ export default {
     },
   },
   computed: {
-    // Заголовок выбранной кнопки
-    checkedTitle() {
-      let value;
-      for (const item of this.options) {
-        if (this.value === item.value) {
-          value = '- ' + item.text;
-        }
-      }
-      return value;
-    },
-    // Иконка выбранной кнопки
-    checkedIcon() {
-      let icon;
-      for (const item of this.options) {
-        if (this.value === item.value) {
-          icon = item.icon;
-        }
-      }
-      return icon;
+    // Выбранное значение
+    selectedOption() {
+      return this.options.find((element) => element.value === this.value);
     },
     // Есть ли в передаваемом массиве иконки
     haveIcon() {
-      let check = false;
-      for (const item of this.options) {
-        if ('icon' in item) {
-          check = true;
-          break;
-        }
-      }
-      return check;
+      return this.options.some((element) => element.icon !== undefined);
     },
   },
 
