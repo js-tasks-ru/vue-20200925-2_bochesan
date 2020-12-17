@@ -92,7 +92,11 @@ export default {
       if (this.search !== defaultProp.search) {
         newQuery.search = this.search;
       }
-      return this.$router.replace({query: newQuery});
+      return this.$router.replace({ query: newQuery }).catch((error) => {
+        if (error.name !== 'NavigationDuplicated') {
+          throw error;
+        }
+      });
     }
   },
 };
