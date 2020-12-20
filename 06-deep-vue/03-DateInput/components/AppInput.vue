@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="input-group"
-    :class="{ 'input-group_icon': hasIcon, 'input-group_icon-left': hasIcon }"
-  >
+  <div class="input-group" :class="{ 'input-group_icon': hasIcon, 'input-group_icon-left': hasIcon }">
     <slot name="left-icon"></slot>
     <input
       class="form-control"
@@ -16,32 +13,25 @@
 <script>
 export default {
   name: 'AppInput',
-
   inheritAttrs: false,
-
   props: {
     value: {},
   },
-
   data() {
     return {
       hasIcon: false,
     };
   },
-
   mounted() {
     this.updateHasIcon();
   },
-
   updated() {
     this.updateHasIcon();
   },
-
   model: {
     prop: 'value',
     event: 'input',
   },
-
   computed: {
     listeners() {
       return {
@@ -50,7 +40,6 @@ export default {
       };
     },
   },
-
   methods: {
     updateHasIcon() {
       this.hasIcon = !!this.$slots['left-icon'];
