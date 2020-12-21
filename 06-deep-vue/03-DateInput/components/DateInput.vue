@@ -7,7 +7,7 @@
     @input.native="handleUpdate"
   >
     <template v-for="slot of Object.keys($slots)" v-slot:[slot]>
-      <slot :name="slot" />
+      <slot :name="slot"/>
     </template>
   </AppInput>
 </template>
