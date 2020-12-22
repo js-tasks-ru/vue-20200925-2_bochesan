@@ -1,24 +1,95 @@
 <template>
   <div class="image-uploader">
     <label
-      class="image-uploader__preview image-uploader__preview-loading"
-      :style="`--bg-image: url('https://course-vue.javascript.ru/api/images/1')`"
+      class="image-uploader__preview"
+      :class="{ 'image-uploader__preview-loading': loading }"
+      :style="image"
     >
-      <span>Удалить изображение</span>
+      <span>{{ message }}</span>
       <input
         type="file"
         accept="image/*"
         class="form-control-file"
+        :disabled="loading"
+        @change="uploadImage"
+        @click="removeImage"
       />
     </label>
   </div>
 </template>
 
 <script>
-// import { ImageService } from '../image-service';
+import { ImageService } from '../image-service';
 
 export default {
   name: 'ImageUploader',
+
+  data() {
+    return {
+      loading: false, // Индикатор состояния загрузки
+    };
+  },
+
+  model: {
+    prop: 'imageId',
+    event: 'change',
+  },
+
+  props: {
+    imageId: {
+      type: Number,
+      default: null,
+    },
+  },
+
+  computed: {
+    // Вычисляемое свойство бекграунд
+    image() {
+      return {
+        '--bg-image':
+          this.getImage(this.imageId) !== null
+            ? `url('${this.getImage(this.imageId)}')`
+            : '',
+      };
+    },
+    // Вычисляемое свойство надписи
+    message() {
+      let mess;
+      if (this.imageId === null && !this.loading) {
+        mess = 'Загрузить изображение';
+      }
+      if (this.imageId !== null && !this.loading) {
+        mess = 'Удалить изображение';
+      }
+      if (this.loading) {
+        mess = 'Загрузка...';
+      }
+      return mess;
+    },
+  },
+
+  methods: {
+    // Получение ссылки изображения
+    getImage(ID) {
+      return ImageService.getImageURL(ID);
+    },
+    // При клике сбрасываем значение инпута и imageId
+    removeImage(event) {
+      event.target.value = null;
+      this.$emit('change', null);
+    },
+    // Загрузка изображения на сервер
+    uploadImage(event) {
+      // Пока идет загрузка индикатор загрузки true
+      this.loading = true;
+      let file = event.target.files[0];
+      ImageService.uploadImage(file).then((el) => {
+        // Загрузка завершена – индикатор загрузки false и обновляем imageId
+        this.loading = false;
+        this.$emit('change', el.id);
+      });
+    },
+  },
 };
 </script>
 
