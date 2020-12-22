@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import FadeTransition from '../solution/components/FadeTransition';
+import FadeTransition from './components/FadeTransition';
 import FadeTransitionGroup from './components/FadeTransitionGroup';
 
 export default {
