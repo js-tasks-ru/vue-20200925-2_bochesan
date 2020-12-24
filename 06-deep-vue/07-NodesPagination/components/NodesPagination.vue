@@ -6,26 +6,27 @@ export default {
     page: {
       type: Number,
       default: 1,
+      validator: function (value) {
+        return typeof value === 'number';
+      },
     },
     perPage: {
       type: Number,
       defult: 3,
-    },
-  },
-
-  computed: {
-    viewSlots() {
-      return {
-        keyStart: this.page * this.perPage - this.perPage,
-        keyEnd: this.page * this.perPage,
-      };
+      validator: function (value) {
+        return typeof value === 'number';
+      },
     },
   },
 
   render: function (createElement) {
+    let keyStart = this.page * this.perPage - this.perPage;
+    let keyEnd = this.page * this.perPage;
     return createElement(
       'div',
-      this.$slots.default.filter(slot => slot.key > this.viewSlots.keyStart && slot.key <= this.viewSlots.keyEnd),
+      Array.isArray(this.$slots.default)
+        ? [...this.$slots.default].splice(keyStart, keyEnd)
+        : null,
     );
   },
 };
