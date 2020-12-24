@@ -12,7 +12,7 @@ export default {
     },
     perPage: {
       type: Number,
-      defult: 3,
+      default: 3,
       validator: function (value) {
         return typeof value === 'number';
       },
