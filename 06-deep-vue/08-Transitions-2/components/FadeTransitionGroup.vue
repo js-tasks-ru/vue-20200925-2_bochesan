@@ -1,6 +1,29 @@
 <script>
 export default {
   name: 'FadeTransitionGroup',
+  render: function (createElement) {
+    let slots = Array.isArray(this.$slots.default)
+      ? this.$slots.default.map((slot) => {
+          if (!slot.data.class) {
+            slot.data.class = {};
+          }
+          slot.data.class['fade-list-item'] = true;
+          return slot;
+        })
+      : null;
+
+    return createElement(
+      'transition-group',
+      {
+        attrs: { ...this.$attrs, name: 'fade-list' },
+        listeners: this.$listeners,
+        class: {
+          'fade-list': true,
+        },
+      },
+      slots,
+    );
+  },
 };
 </script>
 
